@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" 
+          package="com.yourcompany.appname" 
+          android:versionCode="1" 
+          android:versionName="1.0">
+  <!-- 确保添加需要的权限 -->
+  <uses-permission android:name="android.permission.INTERNET" />
+  <!-- 其他需要的权限 -->
+</manifest> 

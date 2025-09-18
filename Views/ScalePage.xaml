@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Games.Views.ScalePage"
+             BackgroundColor="Black">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+        
+        <!-- 背景 -->
+        <Image
+            x:Name="BackgroundImage"
+            Source="scale.png"
+            Aspect="AspectFill"
+            HorizontalOptions="Fill"
+            VerticalOptions="FillAndExpand"
+            BackgroundColor="White"
+            Grid.Column="0" />
+        
+        <!-- 天平左盘 -->
+        <Grid x:Name="LeftPlate"
+              WidthRequest="200"
+              HeightRequest="100"
+              HorizontalOptions="Center"
+              VerticalOptions="Center"
+              Margin="-450,150,0,0"
+              Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Label Text="左盘重量: 0" x:Name="LeftWeightLabel" 
+                   TextColor="White" HorizontalOptions="Center"/>
+            <FlexLayout x:Name="LeftPlateItems" Grid.Row="1"
+                       Direction="Row" Wrap="Wrap" 
+                       JustifyContent="Center"/>
+        </Grid>
+
+        <!-- 天平右盘 -->
+        <Grid x:Name="RightPlate"
+              WidthRequest="200"
+              HeightRequest="100"
+              HorizontalOptions="Center"
+              VerticalOptions="Center"
+              Margin="450,150,0,0"
+              Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Label Text="右盘重量: 0" x:Name="RightWeightLabel" 
+                   TextColor="White" HorizontalOptions="Center"/>
+            <FlexLayout x:Name="RightPlateItems" Grid.Row="1"
+                       Direction="Row" Wrap="Wrap"
+                       JustifyContent="Center"/>
+        </Grid>
+
+        <!-- 球的初始位置 -->
+        <FlexLayout x:Name="BallsContainer"
+                   Direction="Row"
+                   JustifyContent="Center"
+                   AlignItems="Center"
+                   Grid.Column="0"
+                   Margin="0,0,0,290"
+                   VerticalOptions="End">
+            <Image Source="blackball2.png" WidthRequest="50" HeightRequest="50" Margin="5"/>
+            <Image Source="blackball3.png" WidthRequest="50" HeightRequest="50" Margin="5"/>
+            <Image Source="redball.png" WidthRequest="50" HeightRequest="50" Margin="5"/>
+            <Image Source="greenball.png" WidthRequest="50" HeightRequest="50" Margin="5"/>
+            <Image Source="blueball.png" WidthRequest="50" HeightRequest="50" Margin="5"/>
+            <Image Source="yellowball.png" WidthRequest="50" HeightRequest="50" Margin="5"/>
+        </FlexLayout>
+
+        <!-- 平衡提示 -->
+        <Label x:Name="BalanceHintLabel"
+               Text=""
+               TextColor="White"
+               FontSize="24"
+               HorizontalOptions="Center"
+               VerticalOptions="Start"
+               Margin="0,50,0,0"
+               Grid.Column="0"/>
+
+        <!-- 导航箭头 -->
+        <Label 
+            Text="◀"
+            FontSize="24"
+            FontAttributes="Bold"
+            TextColor="Black"
+            WidthRequest="30"
+            HeightRequest="30"
+            HorizontalOptions="Start"
+            VerticalOptions="Center"
+            Grid.Column="0"
+            Margin="20,0"
+            Opacity="0.8">
+            <Label.Shadow>
+                <Shadow Brush="White"
+                        Offset="0,0"
+                        Radius="3"
+                        Opacity="1"/>
+            </Label.Shadow>
+            <Label.GestureRecognizers>
+                <TapGestureRecognizer Tapped="OnBackClicked"/>
+            </Label.GestureRecognizers>
+        </Label>
+
+        <!-- 右箭头 -->
+        <Label 
+            Text="▶"
+            FontSize="24"
+            FontAttributes="Bold"
+            TextColor="Black"
+            WidthRequest="30"
+            HeightRequest="30"
+            HorizontalOptions="End"
+            VerticalOptions="Center"
+            Grid.Column="0"
+            Margin="20,0"
+            Opacity="0.8">
+            <Label.Shadow>
+                <Shadow Brush="White"
+                        Offset="0,0"
+                        Radius="3"
+                        Opacity="1"/>
+            </Label.Shadow>
+            <Label.GestureRecognizers>
+                <TapGestureRecognizer Tapped="OnBackClicked"/>
+            </Label.GestureRecognizers>
+        </Label>
+
+        <!-- 下箭头 -->
+        <Label 
+            Text="▼"
+            FontSize="24"
+            FontAttributes="Bold"
+            TextColor="Black"
+            WidthRequest="30"
+            HeightRequest="30"
+            HorizontalOptions="Center"
+            VerticalOptions="End"
+            Grid.Column="0"
+            Margin="0,0,0,20"
+            Opacity="0.8">
+            <Label.Shadow>
+                <Shadow Brush="White"
+                        Offset="0,0"
+                        Radius="3"
+                        Opacity="1"/>
+            </Label.Shadow>
+            <Label.GestureRecognizers>
+                <TapGestureRecognizer Tapped="OnBackClicked"/>
+            </Label.GestureRecognizers>
+        </Label>
+
+        <!-- 右侧栏 -->
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            
+            <!-- 设置按钮 -->
+            <Image
+                x:Name="SettingImage"
+                Source="setting.png"
+                Aspect="AspectFill"
+                HorizontalOptions="End"
+                VerticalOptions="Start"
+                Margin="4"
+                WidthRequest="30"
+                HeightRequest="30"
+                Grid.Row="0">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnSettingClicked"/>
+                </Image.GestureRecognizers>
+            </Image>
+            
+            <!-- 物品栏 -->
+            <StackLayout
+                x:Name="InventoryLayout"
+                Orientation="Vertical"
+                HorizontalOptions="End"
+                VerticalOptions="End"
+                Spacing="15"
+                Margin="20,40,20,20">
+                <Image
+                    Source="inventory.png"
+                    Aspect="AspectFill"
+                    WidthRequest="50"
+                    HeightRequest="50" />
+                <Image
+                    Source="inventory.png"
+                    Aspect="AspectFill"
+                    WidthRequest="50"
+                    HeightRequest="50" />
+                <Image
+                    Source="inventory.png"
+                    Aspect="AspectFill"
+                    WidthRequest="50"
+                    HeightRequest="50" />
+                <Image
+                    Source="inventory.png"
+                    Aspect="AspectFill"
+                    WidthRequest="50"
+                    HeightRequest="50" />
+                <Image
+                    Source="inventory.png"
+                    Aspect="AspectFill"
+                    WidthRequest="50"
+                    HeightRequest="50" />
+            </StackLayout>
+        </Grid>
+
+        <!-- 提示标签 -->
+        <Label 
+            x:Name="FragmentHintLabel"
+            Text=""
+            TextColor="White"
+            FontSize="24"
+            FontAttributes="Bold"
+            HorizontalOptions="Center"
+            VerticalOptions="Start"
+            HorizontalTextAlignment="Center"
+            VerticalTextAlignment="Center"
+            Margin="0,30,0,0"
+            Padding="25,15,25,15"
+            LineBreakMode="WordWrap"
+            MaxLines="3"
+            WidthRequest="600"
+            MaximumWidthRequest="700"
+            IsVisible="False"
+            Grid.Column="0"
+            ZIndex="9999">
+            <Label.Background>
+                <SolidColorBrush Color="#BF000000"/>
+            </Label.Background>
+            <Label.Shadow>
+                <Shadow 
+                    Brush="Black"
+                    Offset="3,3"
+                    Radius="5"
+                    Opacity="0.7"/>
+            </Label.Shadow>
+        </Label>
+        <Image
+            x:Name="EyeImage"
+            Source="eye.jpg"
+            Aspect="AspectFill"
+            HorizontalOptions="End" 
+            VerticalOptions="Start" 
+            Margin="50,0,5,0"
+            WidthRequest="30"
+            HeightRequest="30"
+            Grid.Row="0">
+            <Image.GestureRecognizers>
+                <TapGestureRecognizer Tapped="OnEyeImageTapped"/>
+            </Image.GestureRecognizers>
+        </Image>
+        <Image
+            x:Name="circleone"
+            Source="circle.jpg"
+            Aspect="AspectFill"
+            HorizontalOptions="Center" 
+            VerticalOptions="Center"  
+            Margin="-220,-90,5,0"
+            WidthRequest="70"
+            HeightRequest="70"
+            IsVisible="False"  
+            Grid.Row="0">
+           </Image>
+                <Image
+            x:Name="circletwo"
+            Source="circle.jpg"
+            Aspect="AspectFill"
+            HorizontalOptions="Center"  
+            VerticalOptions="Center"  
+            Margin="220,-90,5,0"
+            WidthRequest="70"
+            HeightRequest="70"
+            IsVisible="False"  
+            Grid.Row="0">
+        </Image>
+        <Image
+    x:Name="circlethree"
+    Source="circle.jpg"
+    Aspect="AspectFill"
+    HorizontalOptions="Center"  
+    VerticalOptions="Center"  
+    Margin="100,-90,5,0"
+    WidthRequest="70"
+    HeightRequest="70"
+    IsVisible="False"  
+    Grid.Row="0">
+        </Image>
+        <Image
+    x:Name="circlefour"
+    Source="circle.jpg"
+    Aspect="AspectFill"
+    HorizontalOptions="Center"  
+    VerticalOptions="Center"  
+    Margin="-90,-90,5,0"
+    WidthRequest="70"
+    HeightRequest="70"
+    IsVisible="False"  
+    Grid.Row="0">
+        </Image>
+        <!-- 添加半透明黑色覆盖层 -->
+        <Grid x:Name="DarkOverlay" 
+              IsVisible="False" 
+              Grid.ColumnSpan="2" 
+              BackgroundColor="#80000000" 
+              ZIndex="100">
+            <Grid.GestureRecognizers>
+                <TapGestureRecognizer Tapped="OnOverlayTapped"/>
+            </Grid.GestureRecognizers>
+        </Grid>
+    </Grid>
+</ContentPage> 

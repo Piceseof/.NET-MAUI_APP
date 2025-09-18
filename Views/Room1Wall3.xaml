@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Games.Views.Room1Wall3"
+             BackgroundColor="Black">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+
+        <Image
+            x:Name="RoomOneWallImage"
+            Source="roomonewall.png"
+            Aspect="AspectFill"
+            HorizontalOptions="Fill"
+            VerticalOptions="FillAndExpand"
+            Grid.Column="0" >
+            <Image.GestureRecognizers>
+                <TapGestureRecognizer Tapped="backTapped" />
+            </Image.GestureRecognizers>
+        </Image>
+
+
+        <Grid Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <Image
+                Source="wall3_bookshelf.png"
+                Aspect="AspectFill"
+                HorizontalOptions="End"
+                VerticalOptions="End"
+                WidthRequest="150"
+                HeightRequest="250"
+                Grid.Row="6"
+                Grid.Column="0"
+                Margin="0,0,50,20" >
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="bookShelfTapped" />
+                </Image.GestureRecognizers>
+            </Image>
+            <Rectangle
+                Fill="Transparent"
+                HorizontalOptions="End"
+                VerticalOptions="End"
+                WidthRequest="115"
+                HeightRequest="35"
+                Grid.Row="6"
+                Grid.Column="0"
+                Margin="0,0,67,208">
+                <Rectangle.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnBookShelfMoveClicked"/>
+                </Rectangle.GestureRecognizers>
+            </Rectangle>
+
+            <Image
+                x:Name="SofaPictureFragment"
+                Source="sofa_picture_fragment.png"
+                Aspect="AspectFill"
+                HorizontalOptions="Center"
+                VerticalOptions="End"
+                WidthRequest="15"
+                HeightRequest="15"
+                Grid.Row="6"
+                Grid.Column="0"
+                Margin="75,55,163,44" >
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnSofaPictureFragmentClicked"/>
+                </Image.GestureRecognizers>
+            </Image>
+            <Image
+                Source="sofa.png"
+                Aspect="AspectFill"
+                HorizontalOptions="Center"
+                VerticalOptions="End"
+                WidthRequest="250"
+                HeightRequest="150"
+                Grid.Row="6"
+                Grid.Column="0"
+                Margin="0,0,0,20" />
+            <Rectangle
+    Fill="Transparent"
+    HorizontalOptions="Center"  
+    VerticalOptions="End"
+    WidthRequest="160"
+    IsVisible="True"
+    BackgroundColor="White"
+    HeightRequest="130"
+    Grid.Row="6"
+    Grid.Column="0"
+    Margin="0,0,50,223">
+            </Rectangle>
+            <Image
+    Source="window.jpg"
+    Aspect="AspectFill"
+    HorizontalOptions="Center"
+    VerticalOptions="End"
+    WidthRequest="180"
+    HeightRequest="140"
+    Grid.Row="6"
+    Grid.Column="0"
+    Margin="0,0,50,220" />
+            <Image
+                Source="ladder.png"
+                Aspect="AspectFill"
+                HorizontalOptions="Start"
+                VerticalOptions="End"
+                WidthRequest="250"
+                HeightRequest="350"
+                Grid.Row="6"
+                Grid.Column="0"
+                Margin="0,0,0,30" >
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="ladderTapped" />
+                </Image.GestureRecognizers>
+            </Image>
+            <Image
+                Source="wall3_bookshelf_book_move.png"
+                Aspect="AspectFill"
+                HorizontalOptions="End"
+                VerticalOptions="End"
+                WidthRequest="110"
+                HeightRequest="43"
+                Grid.Row="6"
+                Grid.Column="0"
+                Margin="0,0,68,122" >
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnBookshelfClicked"/>
+                </Image.GestureRecognizers>
+            </Image>
+        </Grid>
+
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Image
+                x:Name="SettingImage"
+                Source="setting.png"
+                Aspect="AspectFill"
+                HorizontalOptions="End"
+                VerticalOptions="Start"
+                Margin="4"
+                WidthRequest="30"
+                HeightRequest="30"
+                Grid.Row="0">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnSettingClicked"/>
+                </Image.GestureRecognizers>
+            </Image>
+
+            <StackLayout
+                x:Name="InventoryLayout"
+                Orientation="Vertical"
+                HorizontalOptions="End"
+                VerticalOptions="End"
+                Spacing="15"
+                Margin="20,40,20,20">
+                <Image
+                    Source="inventory.png"
+                    Aspect="AspectFill"
+                    WidthRequest="50"
+                    HeightRequest="50" />
+                <Image
+                    Source="inventory.png"
+                    Aspect="AspectFill"
+                    WidthRequest="50"
+                    HeightRequest="50" />
+                <Image
+                    Source="inventory.png"
+                    Aspect="AspectFill"
+                    WidthRequest="50"
+                    HeightRequest="50" />
+                <Image
+                    Source="inventory.png"
+                    Aspect="AspectFill"
+                    WidthRequest="50"
+                    HeightRequest="50" />
+                <Image
+                    Source="inventory.png"
+                    Aspect="AspectFill"
+                    WidthRequest="50"
+                    HeightRequest="50" />
+            </StackLayout>
+        </Grid>
+        <Label 
+    x:Name="LeftButton"
+    Text="◀"
+    FontSize="24"
+    FontAttributes="Bold"
+    TextColor="Black"
+    WidthRequest="30"
+    HeightRequest="30"
+    HorizontalOptions="Start"
+    VerticalOptions="Center"
+    Margin="20,0"
+    Opacity="0.8">
+            <Label.Shadow>
+                <Shadow Brush="White"
+                Offset="0,0"
+                Radius="3"
+                Opacity="1"/>
+            </Label.Shadow>
+            <Label.GestureRecognizers>
+                <TapGestureRecognizer Tapped="OnLeftButtonClicked"/>
+            </Label.GestureRecognizers>
+        </Label>
+
+        <Label 
+    x:Name="RightButton"
+    Text="▶"
+    FontSize="24"
+    FontAttributes="Bold"
+    TextColor="Black"
+    WidthRequest="30"
+    HeightRequest="30"
+    HorizontalOptions="End"
+    VerticalOptions="Center"
+    Margin="20,0"
+    Opacity="0.8">
+            <Label.Shadow>
+                <Shadow Brush="White"
+                Offset="0,0"
+                Radius="3"
+                Opacity="1"/>
+            </Label.Shadow>
+            <Label.GestureRecognizers>
+                <TapGestureRecognizer Tapped="OnRightButtonClicked"/>
+            </Label.GestureRecognizers>
+        </Label>
+
+        <!-- 提示文本 Label -->
+        <Label 
+            x:Name="FragmentHintLabel"
+            Text=""
+            TextColor="White"
+            FontSize="24"
+            FontAttributes="Bold"
+            HorizontalOptions="Center"
+            VerticalOptions="Start"
+            HorizontalTextAlignment="Center"
+            VerticalTextAlignment="Center"
+            Margin="0,30,0,0"
+            Padding="25,15,25,15"
+            LineBreakMode="WordWrap"
+            MaxLines="3"
+            WidthRequest="600"
+            MaximumWidthRequest="700"
+            IsVisible="False"
+            Grid.Column="0"
+            ZIndex="9999">
+            <Label.Background>
+                <SolidColorBrush Color="#BF000000"/>
+            </Label.Background>
+            <Label.Shadow>
+                <Shadow 
+                    Brush="Black"
+                    Offset="3,3"
+                    Radius="5"
+                    Opacity="0.7"/>
+            </Label.Shadow>
+        </Label>
+    </Grid>
+</ContentPage>

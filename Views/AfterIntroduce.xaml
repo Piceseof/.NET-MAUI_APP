@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Games.Views.AfterIntroduce"
+             BackgroundColor="White">
+    <Grid>
+        <!-- 点击任意位置返回开始界面 -->
+        <Grid.GestureRecognizers>
+            <TapGestureRecognizer Tapped="OnPageTapped"/>
+        </Grid.GestureRecognizers>
+        
+        <!-- 居中的图片 -->
+        <Image
+            x:Name="GoodImage"
+            Source="good.png"
+            Aspect="AspectFit"
+            HorizontalOptions="Center"
+            VerticalOptions="Center"
+            WidthRequest="800"
+            HeightRequest="400"/>
+            
+        <!-- 文字说明 -->
+        <Label
+            x:Name="CongratulationText"
+            Text="经过一番艰难的探索，你终于找到了逃脱的路。你猛地推开那扇沉重的木门，踏出房间，心中涌上一股松一口气的轻松感。然而，当你回头的那一刻，眼前的一切发生了剧变。房间的门毫无预兆地关上了，发出沉重的撞击声。你站在门外，愣住了，心头涌上一阵不安——你没有真正逃脱。你依然被困在这个充满谜团的地方，谜题仍未解开。你深吸一口气，知道这场冒险远未结束，你必须继续前行，寻找真相。"
+            TextColor="white"
+            FontSize="22"
+            FontAttributes="Bold"
+            HorizontalOptions="Center" 
+            VerticalOptions="Center"  
+            HorizontalTextAlignment="Center" 
+            VerticalTextAlignment="Center"
+            LineBreakMode="WordWrap"
+            MaxLines="10"
+            WidthRequest="458"
+            Margin="0,0,0,0"/>
+            
+        <!-- 点击继续提示 -->
+        <Label
+            Text="点击任意位置返回主菜单..."
+            TextColor="DarkGray"
+            FontSize="18"
+            HorizontalOptions="Center"
+            VerticalOptions="End"
+            Margin="0,0,0,20"/>
+    </Grid>
+</ContentPage> 

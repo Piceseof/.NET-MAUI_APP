@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Games.Views.SettingPage"
+             BackgroundColor="Black">
+    
+    <Grid RowDefinitions="Auto,*" Padding="20">
+        <!-- 顶部导航栏 -->
+        <Grid Grid.Row="0" ColumnDefinitions="Auto,*,Auto" Margin="0,0,0,20">
+            <Button 
+                Grid.Column="0"
+                Text="返回"
+                TextColor="White"
+                BackgroundColor="DarkBlue"
+                FontSize="18"
+                Clicked="OnBackClicked"
+                HorizontalOptions="Start"
+                VerticalOptions="Center"/>
+            
+            <Label 
+                Text="设置"
+                Grid.Column="1"
+                TextColor="White"
+                FontSize="24"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"/>
+        </Grid>
+
+        <!-- 主要内容区域：两列布局 -->
+        <Grid Grid.Row="1" 
+              ColumnDefinitions="*, 20, *">
+            
+            <!-- 左侧：游戏设置 -->
+            <ScrollView Grid.Column="0">
+                <StackLayout Spacing="20" Margin="0,0,0,20">
+                    <Label 
+                        Text="游戏设置"
+                        TextColor="White"
+                        FontSize="20"
+                        FontAttributes="Bold"/>
+                    
+                    <!-- 背景音乐开关 -->
+                    <Grid ColumnDefinitions="*,Auto" Margin="0,0,0,10">
+                        <Label 
+                            Text="背景音乐"
+                            TextColor="White"
+                            FontSize="18"
+                            VerticalOptions="Center"/>
+                        <Switch 
+                            x:Name="MusicSwitch"
+                            Grid.Column="1"
+                            IsToggled="True"
+                            Toggled="OnMusicToggled"
+                            OnColor="{StaticResource Primary}"/>
+                    </Grid>
+
+                    <!-- 背景音乐音量 -->
+                    <StackLayout Spacing="5">
+                        <Label 
+                            Text="背景音乐音量"
+                            TextColor="White"
+                            FontSize="18"/>
+                        <Slider 
+                            x:Name="MusicVolumeSlider"
+                            Maximum="1"
+                            Minimum="0"
+                            Value="0.5"
+                            ValueChanged="OnMusicVolumeChanged"/>
+                    </StackLayout>
+
+                    <!-- 游戏时长统计 -->
+                    <StackLayout Spacing="5" Margin="0,10,0,0">
+                        <Label 
+                            Text="游戏时长统计"
+                            TextColor="White"
+                            FontSize="18"/>
+                        <Grid ColumnDefinitions="*,Auto" Margin="0,5,0,0">
+                            <Label 
+                                x:Name="GameTimeLabel"
+                                Text="0小时0分0秒"
+                                TextColor="#66FF66"
+                                FontSize="20"
+                                FontAttributes="Bold"
+                                VerticalOptions="Center"/>
+                            <Button
+                                Grid.Column="1"
+                                Text="刷新"
+                                BackgroundColor="DarkGreen"
+                                TextColor="White"
+                                FontSize="12"
+                                WidthRequest="60"
+                                HeightRequest="30"
+                                Padding="0"
+                                Clicked="OnRefreshTimeClicked"/>
+                        </Grid>
+                    </StackLayout>
+
+                    <!-- 重置游戏按钮 -->
+                    <StackLayout Spacing="5" Margin="0,20,0,0">
+                        <Label 
+                            Text="游戏数据"
+                            TextColor="White"
+                            FontSize="18"/>
+                        <Button 
+                            Text="重置游戏"
+                            BackgroundColor="DarkRed"
+                            TextColor="White"
+                            Clicked="OnResetGameClicked"/>
+                    </StackLayout>
+
+                    
+                </StackLayout>
+            </ScrollView>
+
+            <!-- 右侧：关于信息 -->
+            <ScrollView Grid.Column="2">
+                <StackLayout Spacing="20">
+                    <Label 
+                        Text="关于"
+                        TextColor="White"
+                        FontSize="20"
+                        FontAttributes="Bold"/>
+
+                    <!-- 版本信息 -->
+                    <StackLayout Spacing="10">
+                        <Label 
+                            Text="版本信息"
+                            TextColor="LightGray"
+                            FontSize="18"
+                            FontAttributes="Bold"/>
+                        <Label 
+                            Text="版本：4.5.9"
+                            TextColor="LightGray"
+                            FontSize="16"/>
+                        <Label 
+                            Text="更新日期：2025-03-12"
+                            TextColor="LightGray"
+                            FontSize="16"/>
+                    </StackLayout>
+
+                    <!-- 制作人员名单 -->
+                    <StackLayout Spacing="10">
+                        <Label 
+                            Text="制作人员"
+                            TextColor="LightGray"
+                            FontSize="18"
+                            FontAttributes="Bold"/>
+                        <Label 
+                            Text="游戏设计：刘承裕、万果果"
+                            TextColor="LightGray"
+                            FontSize="16"/>
+                        <Label 
+                            Text="程序开发：刘承裕"
+                            TextColor="LightGray"
+                            FontSize="16"/>
+                        <Label 
+                            Text="美术设计：刘承裕、胡佳颖、万果果"
+                            TextColor="LightGray"
+                            FontSize="16"/>
+                    </StackLayout>
+
+                    <!-- 联系方式 -->
+                    <StackLayout Spacing="10">
+                        <Label 
+                            Text="联系方式"
+                            TextColor="LightGray"
+                            FontSize="18"
+                            FontAttributes="Bold"/>
+                        <Label 
+                            Text="邮箱：255169814@qq.com"
+                            TextColor="LightGray"
+                            FontSize="16"/>
+                    </StackLayout>
+                </StackLayout>
+            </ScrollView>
+        </Grid>
+    </Grid>
+</ContentPage>

@@ -1,0 +1,154 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<WindowsAppSdkDeploymentManagerInitialize>false</WindowsAppSdkDeploymentManagerInitialize>
+		<TargetFrameworks>net8.0-android</TargetFrameworks>
+
+		<!-- 禁用优化配置 -->
+		<PublishTrimmed>false</PublishTrimmed>
+		<TrimMode>none</TrimMode>
+		<RunAOTCompilation>false</RunAOTCompilation>
+		<EnableLLVM>false</EnableLLVM>
+
+		<OutputType>Exe</OutputType>
+		<RootNamespace>Games</RootNamespace>
+		<UseMaui>true</UseMaui>
+		<SingleProject>true</SingleProject>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+
+		<!-- Display name -->
+		<ApplicationTitle>Games</ApplicationTitle>
+
+		<!-- App Identifier -->
+		<ApplicationId>com.companyname.games</ApplicationId>
+		<ApplicationIdGuid>guid-here</ApplicationIdGuid>
+
+		<!-- Versions -->
+		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
+		<ApplicationVersion>1</ApplicationVersion>
+
+		<!-- 只保留 Android 平台设置 -->
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">21.0</SupportedOSPlatformVersion>
+		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.26100.0</SupportedOSPlatformVersion>
+		<TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.26100.0</TargetPlatformMinVersion>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net8.0-android|AnyCPU'">
+		<!-- 禁用链接优化 -->
+		<AndroidLinkMode>None</AndroidLinkMode>
+		<PublishTrimmed>false</PublishTrimmed>
+
+		<AndroidPackageFormat>apk</AndroidPackageFormat>
+		<AndroidUseAapt2>True</AndroidUseAapt2>
+		<AndroidCreatePackagePerAbi>True</AndroidCreatePackagePerAbi>
+		<AndroidKeyStore>True</AndroidKeyStore>
+		<AndroidSigningKeyStore>games.keystore</AndroidSigningKeyStore>
+		<AndroidSigningKeyAlias>games</AndroidSigningKeyAlias>
+		<AndroidSigningKeyPass>123456</AndroidSigningKeyPass>
+		<AndroidSigningStorePass>123456</AndroidSigningStorePass>
+		<AndroidEnableMultiDex>False</AndroidEnableMultiDex>
+		<DebugSymbols>True</DebugSymbols>
+		<AndroidUseApkSigner>true</AndroidUseApkSigner>
+		<AndroidSigningScheme>v2</AndroidSigningScheme>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net8.0-android|AnyCPU'">
+		<!-- 禁用链接优化 -->
+		<AndroidLinkMode>None</AndroidLinkMode>
+
+		<AndroidKeyStore>False</AndroidKeyStore>
+		<AndroidUseAapt2>True</AndroidUseAapt2>
+		<AndroidCreatePackagePerAbi>False</AndroidCreatePackagePerAbi>
+		<AndroidPackageFormat>apk</AndroidPackageFormat>
+		<AndroidEnableMultiDex>False</AndroidEnableMultiDex>
+	</PropertyGroup>
+
+	<PropertyGroup>
+	  <TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net8.0-windows10.0.26100.0</TargetFrameworks>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<!-- App Icon -->
+		<MauiIcon Include="Resources\AppIcon\appicon.svg" />
+		<!-- Splash Screen -->
+		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#FFFFFF" />
+		<!-- Images -->
+		<MauiImage Include="Resources\Images\*" />
+
+		<!-- Custom Fonts -->
+		<MauiFont Include="Resources\Fonts\*" />
+
+		<!-- Raw Assets (also remove the "Resources\Raw" prefix) -->
+		<MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<AndroidResource Remove="ViewModels\**" />
+		<Compile Remove="ViewModels\**" />
+		<EmbeddedResource Remove="ViewModels\**" />
+		<MauiCss Remove="ViewModels\**" />
+		<MauiXaml Remove="ViewModels\**" />
+		<None Remove="ViewModels\**" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Remove="Resources\Images\bloodhidden.png" />
+		<None Remove="Resources\Images\bloodone.png" />
+		<None Remove="Resources\Images\bloodthree.png" />
+		<None Remove="Resources\Images\broken_paintings.png" />
+		<None Remove="Resources\Images\cabinettleft.png" />
+		<None Remove="Resources\Images\paper.png" />
+		<None Remove="Resources\Images\pictureframe.png" />
+		<None Remove="Resources\Images\wall3_bookshelf.png" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
+		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
+		<PackageReference Include="sqlite-net-pcl" Version="1.9.172" />
+		<PackageReference Include="SQLitePCLRaw.bundle_green" Version="2.1.10" />
+		<PackageReference Include="Plugin.Maui.Audio" Version="2.1.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Compile Update="Views\PaperDisplayPage.xaml.cs">
+			<DependentUpon>PaperDisplayPage.xaml</DependentUpon>
+		</Compile>
+		<Compile Update="Views\SafeDepositBox.xaml.cs">
+			<DependentUpon>SafeDepositBox.xaml</DependentUpon>
+		</Compile>
+		<Compile Update="Views\StartGamePage.xaml.cs">
+			<DependentUpon>StartGamePage.xaml</DependentUpon>
+		</Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+		<MauiXaml Update="AppShell.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
+		<MauiXaml Update="Views\BoxRiddle.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
+		<MauiXaml Update="Views\SettingPage.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
+		<MauiXaml Update="Views\StartGamePage.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
+		<MauiXaml Update="Views\Room1Wall1.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
+		<MauiXaml Update="Views\BookShelfMove.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
+		<MauiXaml Update="Views\startintroduce.xaml">
+		  <Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
+	</ItemGroup>
+
+	<ProjectExtensions><VisualStudio><UserProperties XamarinHotReloadDebuggerTimeoutExceptionGamesHideInfoBar="True" /></VisualStudio></ProjectExtensions>
+
+</Project>

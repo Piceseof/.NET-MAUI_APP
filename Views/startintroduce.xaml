@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Games.Views.StartIntroduce"
+             BackgroundColor="White">
+    <Grid>
+        <!-- 点击任意位置转到游戏界面 -->
+        <Grid.GestureRecognizers>
+            <TapGestureRecognizer Tapped="OnPageTapped"/>
+        </Grid.GestureRecognizers>
+        
+        <!-- 卷轴背景图片 -->
+        <Image
+            x:Name="ScrollImage"
+            Source="scroll.png"
+            Aspect="AspectFit"
+            HorizontalOptions="Center"
+            VerticalOptions="Center"
+            WidthRequest="950"
+            HeightRequest="470"/>
+            
+        <!-- 卷轴上的文字 -->
+        <Label
+            x:Name="IntroductionText"
+            Text="你猛地从一个迷幻的梦境中惊醒，眼前一片昏暗，头痛欲裂。你试图动弹，却发现四肢乏力，整个房间让你感到陌生而压抑。空气中弥漫着一股霉味，仿佛长时间没有透气。你努力让自己的思绪恢复清晰，环顾四周，发现自己被困在一个狭小、古老的房间里。墙壁斑驳，带着岁月的痕迹，天花板上的昏黄吊灯散发出微弱的光。你屏住呼吸，心跳加速，意识到这并非你熟悉的地方。你拼命想回忆自己如何来到这里，但记忆却如同被雾霾笼罩，模糊不清。你心中充满了疑问和恐惧，意识到自己必须找到出口，离开这诡异的地方。"
+            TextColor="Blue"
+            FontSize="20"
+            FontAttributes="Bold"
+            HorizontalOptions="Center"
+            VerticalOptions="Center"
+            HorizontalTextAlignment="Center"
+            VerticalTextAlignment="Center"
+            LineBreakMode="WordWrap"
+            MaxLines="10"
+            WidthRequest="550"
+            Margin="0,0,0,0"/>
+            
+        <!-- 点击继续提示 -->
+        <Label
+            Text="点击任意位置继续..."
+            TextColor="DarkGray"
+            FontSize="18"
+            HorizontalOptions="Center"
+            VerticalOptions="End"
+            Margin="0,0,0,25"/>
+    </Grid>
+</ContentPage>

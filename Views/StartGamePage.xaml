@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Games.Views.StartGamePage">
+
+    <Grid>
+        <Image
+            Source="start_background.png"
+            Aspect="AspectFill"
+            HorizontalOptions="FillAndExpand"
+            VerticalOptions="FillAndExpand"/>
+
+        <!-- 使用Grid进行相对布局 -->
+        <Grid>
+            <Image
+                x:Name="SettingImage"
+                Source="setting.png"
+                Aspect="AspectFill"
+                WidthRequest="50"
+                HeightRequest="50"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                Margin="750,-315,0,0">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnSettingClicked"/>
+                </Image.GestureRecognizers>
+            </Image>
+
+            <!-- 游戏按钮容器 -->
+            <StackLayout x:Name="ButtonContainer"
+                        VerticalOptions="Center"
+                        HorizontalOptions="Center"
+                        Spacing="10">
+                <!-- 按钮会在代码中动态添加 -->
+            </StackLayout>
+        </Grid>
+    </Grid>
+</ContentPage>
