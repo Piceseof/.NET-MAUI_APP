@@ -171,7 +171,7 @@
                     Aspect="AspectFill"
                      HorizontalOptions="Center" 
              VerticalOptions="Center"  
-             Margin="-560,270,5,0"
+             Margin="-500,240,5,0"
              WidthRequest="50"
              HeightRequest="50"
              IsVisible="False"   

@@ -61,7 +61,7 @@
             WidthRequest="500"
             HeightRequest="300"
             Grid.Column="0"
-            Margin="0,9,163,0"/>
+            Margin="0,-16,93,0"/>
         <Image
             x:Name="Book1"
             Source="book1.png"

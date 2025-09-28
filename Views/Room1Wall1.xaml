@@ -134,7 +134,7 @@
                 HeightRequest="180"
                 Grid.Row="0"
                 Grid.Column="1" 
-                 Margin="0,200,40,0">
+                 Margin="0,200,30,0">
                 <Image.GestureRecognizers>
                     <TapGestureRecognizer Tapped="cabinetClicked"/>
                 </Image.GestureRecognizers>
@@ -296,7 +296,7 @@
                 HeightRequest="20"
                 Grid.Row="0"
                 Grid.Column="2" 
-                Margin="20,347,0,0">
+                Margin="20,323,0,0">
                 <Image.GestureRecognizers>
                     <TapGestureRecognizer Tapped="OnBoxClicked"/>
                 </Image.GestureRecognizers>
@@ -311,7 +311,7 @@
                 HeightRequest="50"
                 Grid.Row="0"
                 Grid.Column="2" 
-                Margin="190,330,70,0">
+                Margin="190,300,70,0">
                 <Image.GestureRecognizers>
                     <TapGestureRecognizer Tapped="OnFrameClicked"/>
                 </Image.GestureRecognizers>

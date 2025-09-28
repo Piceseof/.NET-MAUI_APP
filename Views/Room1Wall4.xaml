@@ -128,7 +128,7 @@
                 HeightRequest="100"
                 Grid.Row="6"
                 Grid.Column="0"
-                Margin="540,0,0,130" >
+                Margin="460,0,0,130" >
                 <Image.GestureRecognizers>
                     <TapGestureRecognizer Tapped="OnClothClicked" />
                 </Image.GestureRecognizers>
